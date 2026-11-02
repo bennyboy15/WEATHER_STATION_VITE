@@ -1,19 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import "./App.css";
-import { api } from "./axios";
-
-interface Stations {
-    id: number;
-    name: string;
-    latitude: number;
-    longitude: number;
-}
+import { useStations } from "./hooks/stations.hooks";
 
 function App() {
-    const { data, isPending, error } = useQuery({
-        queryKey: ["stations"],
-        queryFn: () => api.get<Stations[]>("/stations").then((r) => r.data),
-    });
+    const { data, isPending, error } = useStations();
 
     if (isPending) return <p>Loading…</p>;
     if (error) return <p>Error: {error.message}</p>;
