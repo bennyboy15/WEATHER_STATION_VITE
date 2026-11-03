@@ -4,3 +4,5 @@ export interface Stations {
     latitude: number;
     longitude: number;
 }
+
+export type UpdateStationType = Partial<Omit<Stations, "id">>;
