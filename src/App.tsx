@@ -1,4 +1,5 @@
 import "./App.css";
+import StationCard from "./components/StationCard";
 import { useReadings } from "./hooks/readings.hooks";
 import { useStations } from "./hooks/stations.hooks";
 
@@ -10,7 +11,9 @@ function App() {
         <>
             <ul>
                 {stations?.map((station) => (
-                    <li key={station.id}>{station.name}</li>
+                    <li key={station.id}>
+                        <StationCard name={station.name} temp={10} lastUpdated={"Now"}></StationCard>
+                    </li>
                 ))}
             </ul>
 
