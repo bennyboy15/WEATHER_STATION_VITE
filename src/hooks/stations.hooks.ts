@@ -10,6 +10,14 @@ export function useStations() {
     });
 }
 
+export function useStation(stationId: number) {
+    return useQuery({
+        queryKey: ["stations", stationId],
+        queryFn: () => api.get<Stations>(`/stations/${stationId}`).then((r) => r.data),
+        enabled: Number.isFinite(stationId),
+    });
+}
+
 export function useUpdateStation() {
     return useMutation({
         mutationKey: ["stations"],
